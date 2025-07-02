@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.background {
+    background-image: url('img/bg.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    position: relative;
+}
+
+.weather-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+#cityInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+}
+
+#searchBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.history {
+    margin-bottom: 30px;
+}
+
+.history h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+}
+
+#historyList li {
+    margin-bottom: 8px;
+    cursor: pointer;
+    color: #eee;
+    transition: color 0.3s;
+}
+
+#historyList li:hover {
+    color: #90caf9;
+}
+
+.weather-box {
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.weather-box h2 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.weather-box p {
+    font-size: 16px;
+    margin: 6px 0;
+}
+
+.top-left-logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.weather-box {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .weather-panel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .top-left-logo {
+        position: static;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .weather-box {
+        position: static;
+        margin-top: 20px;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .background {
+        overflow-y: auto;
+    }
+
+    .search-bar {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    #cityInput {
+        font-size: 14px;
+    }
+
+    #searchBtn {
+        font-size: 16px;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  button {
+    padding: 5px 10px;
+    background-color: crimson;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .delete-all {
+    margin-bottom: 20px;
+  }
+  
+  .delete-all button {
+    background-color: #d32f2f;
+    border: none;
+    padding: 8px 16px;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-all button:hover {
+    background-color: #b71c1c;
+  }
+  .riwayat-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #001f3f; /* navy */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .riwayat-button:hover {
+    background-color: #003366;
+  }
+  .riwayat-button {
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .riwayat-container {
+    text-align: center;
+  }
+
+  .riwayat-page {
+    background-image: url("img/riwayatbg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .riwayat-overlay {
+    width: 70%;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .delete-all {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .delete-all button {
+    background-color: #d32f2f;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-all button:hover {
+    background-color: #b71c1c;
+  }
+  
+  #historyTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  #historyTable th,
+  #historyTable td {
+    padding: 10px;
+    border: 1px solid #999;
+    text-align: center;
+    color: #333;
+  }
+  
+  #historyTable th {
+    background-color: #003366;
+    color: white;
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #003366;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  .slogan {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .slogan {
+    transition: opacity 0.5s ease;
+  }
+  
+  .slogan[style*="display: none"] {
+    opacity: 0;
+  }
+  

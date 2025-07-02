@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Riwayat Pencarian Cuaca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="riwayat-page">
+
+  <div class="riwayat-overlay">
+    <h1>Riwayat Pencarian Cuaca</h1>
+    <div class="delete-all">
+      <button onclick="hapusSemua()">Hapus Semua Riwayat</button>
+    </div>
+    <table id="historyTable" border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Kota</th>
+          <th>Waktu</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <br />
+    <a href="index.html" class="back-link">🔙 Kembali ke Halaman Utama</a>
+  </div>
+
+  <script>
+    async function loadHistory() {
+      const res = await fetch("http://localhost:3000/api/cuaca");
+      const data = await res.json();
+
+      const tbody = document.querySelector("#historyTable tbody");
+      tbody.innerHTML = "";
+
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.id}</td>
+          <td>${row.nama_kota}</td>
+          <td>${new Date(row.waktu_pencarian).toLocaleString()}</td>
+          <td>
+  <button onclick="editHistory(${row.id}, '${row.nama_kota}')">Edit</button>
+  <button onclick="deleteHistory(${row.id})">Hapus</button>
+</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function deleteHistory(id) {
+      await fetch(`http://localhost:3000/api/cuaca/${id}`, { method: "DELETE" });
+      loadHistory();
+    }
+
+    async function hapusSemua() {
+      if (!confirm("Yakin ingin menghapus semua riwayat pencarian?")) return;
+
+      try {
+        const response = await fetch("http://localhost:3000/api/cuaca", {
+          method: "DELETE"
+        });
+
+        if (!response.ok) throw new Error("Gagal menghapus semua data");
+
+        alert("Semua data berhasil dihapus");
+        location.reload();
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    }
+
+    async function editHistory(id, currentName) {
+  const newName = prompt("Edit nama kota:", currentName);
+  if (!newName || newName.trim() === "") return;
+
+  try {
+    const response = await fetch(`http://localhost:3000/api/cuaca/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nama_kota: newName })
+    });
+
+    if (!response.ok) throw new Error("Gagal mengupdate data");
+
+    alert("Data berhasil diupdate");
+    loadHistory();
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+}
+
+    loadHistory();
+  </script>
+</body>
+</html>
